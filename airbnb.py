@@ -1,10 +1,8 @@
 import pandas as pd
-import folium
 import streamlit as st
-from streamlit_option_menu import option_menu
 import pandas as pd
-
-
+import json
+import csv
 
 st.set_page_config(page_title="AirBnb-Analysis", page_icon=":bar_chart:", layout="wide")
 
@@ -28,3 +26,20 @@ filtered_df = df[(df['price'] >= price_range[0]) & (df['price'] <= price_range[1
 # Display map
 st.title("Distribution of Airbnb listings to explore Prices, Ratings")
 st.map(filtered_df[['latitude', 'longitude']].dropna(), zoom=1)
+
+#-------------------------------------------------------------------------------------
+#file conversion for snowflake
+
+def csv_to_json(csv_file, json_file):
+    # Read CSV file and convert to list of dictionaries
+    with open(csv_file, 'r', newline='', encoding='utf-8') as csvfile:
+        csv_reader = csv.DictReader(csvfile)
+        data = list(csv_reader)
+    
+    with open(json_file, 'w', encoding='utf-8') as jsonfile:
+        json.dump(data, jsonfile, indent=4)
+
+csv_file = r"E:\airbnb project\cleaned_Data.csv"
+json_file = r"E:\airbnb project\output.json"
+
+csv_to_json(csv_file, json_file)
