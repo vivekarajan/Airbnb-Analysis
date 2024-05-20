@@ -18,7 +18,9 @@
     Streamlit
     powerBI 
 
-#  COMING SOON
+#  step by step process:
+project video : https://www.loom.com/share/d9012f32aad546df80a0a540ea6bb435?sid=85a7cf4a-0262-4f80-ad68-6fbfc736f791
+
 
 
 
